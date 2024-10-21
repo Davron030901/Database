@@ -1,0 +1,6 @@
+-- Print a list of employees who have not delivered more than 5 orders on time
+
+select * from (select em.first_name, em.last_name, laters.employee_id, laters.nl from employees em,
+(select o.employee_id, count(o.employee_id) as nl from orders o
+join employees e on e.employee_id = o.employee_id
+where o.required_date < o.shipped_date group by o.employee_id) as laters where em.employee_id = laters.employee_id) as res where res.nl >= 5;

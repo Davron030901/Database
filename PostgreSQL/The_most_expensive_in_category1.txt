@@ -1,0 +1,12 @@
+/* Top 10 best selling products in category 1 who ordered and which
+information about delivery by the company */
+
+select orders.order_id,products.unit_price,category_name,description,ship_name,customers.company_name,shippers.company_name from order_details
+join products on products.product_id=order_details.product_id
+join categories on  categories.category_id=products.category_id
+join orders on orders.order_id=order_details.order_id
+join shippers on shippers.shipper_id=orders.ship_via
+join customers on customers.customer_id =orders.customer_id
+WHERE categories.category_id=1
+ORDER BY order_details.unit_price desc
+LIMIT 10 OFFSET 1;

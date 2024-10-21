@@ -1,0 +1,9 @@
+--Compile a request to determine how many employees there are from each country
+
+select country,COUNT(country) as country_count from employees
+where country in ('USA')
+GROUP BY country
+UNION
+select country,COUNT(country) as country_count from employees
+where country in ('UK')
+GROUP BY country

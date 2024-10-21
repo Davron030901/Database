@@ -1,0 +1,8 @@
+/* About the product and company that ordered the most and the lowest price
+information */
+
+SELECt suppliers.company_name,order_details.unit_price,product_name,contact_name as "company_contact",address as "company address",quantity From order_details
+join products ON products.product_id=order_details.product_id
+join orders On orders.order_id=order_details.order_id
+join suppliers on suppliers.supplier_id=products.supplier_id
+where quantity=(SELECT max(quantity) From order_details) or order_details.unit_price=(SELECT min(order_details.unit_price) From order_details)

@@ -1,0 +1,5 @@
+-- More than 10 best-selling products and staff information
+
+SELECT ship_name , quantity from order_details
+join orders on  orders.order_id=order_details.order_id
+where quantity>10;

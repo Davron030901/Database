@@ -1,0 +1,8 @@
+/* Write a query that finds information about workers with less than 50 orders
+(Employees and Orders) */
+
+SELECT first_name,last_name,birth_date,address,city,country,quantity as coast_quantity FROM orders
+join employees on orders.employee_id = employees.employee_id
+join order_details on order_details.order_id =orders.order_id
+where quantity<50
+ORDER BY quantity

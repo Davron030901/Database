@@ -1,0 +1,6 @@
+/* Write a query that finds the total amount of products ordered in 1996
+(Orders and Order Details) */
+
+select SUM(unit_price) as sum_price from orders
+join order_details on order_details.order_id=orders.order_id
+where order_date BETWEEN '1996-01-01' AND '1997-01-01'

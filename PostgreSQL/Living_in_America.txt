@@ -1,0 +1,7 @@
+/* Create information about the most active workers living in America */
+
+SELECT order_details.quantity,employees.first_name,employees.last_name,employees.country,employees.region,employees.home_phone,employees.photo,employees.notes FROM orders
+join employees on employees.employee_id=orders.employee_id
+join order_details on order_details.order_id=orders.order_id
+where employees.country in ('USA') and order_details.quantity=(SELECT max(order_details.quantity) from order_details)
+

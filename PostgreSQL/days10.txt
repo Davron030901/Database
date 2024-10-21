@@ -1,0 +1,7 @@
+/* Print the 10 days when the most orders were received */
+
+select order_date ,quantity from order_details
+join orders on  order_details.order_id=orders.order_id
+where order_date BETWEEN '1996-01-01' and '1997-01-01'
+order by quantity desc
+limit 10;

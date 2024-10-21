@@ -1,0 +1,6 @@
+/* Create a list of products that are ordered a lot but have a low price*/
+
+SELECT order_details.order_id,product_name, quantity,order_details.unit_price,quantity_per_unit from order_details
+join products on products.product_id=order_details.product_id
+where order_details.unit_price<10
+ORDER BY quantity  DESC;

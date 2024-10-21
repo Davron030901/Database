@@ -1,0 +1,8 @@
+/* The number of buyers who placed two or more orders will release the top 50*/
+
+select DISTINCT company_name,quantity from orders
+join customers on customers.customer_id=orders.customer_id
+join order_details on order_details.order_id=orders.order_id
+where  quantity>=2
+order by quantity
+LIMIT 50;

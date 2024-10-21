@@ -1,0 +1,8 @@
+/* In 1996, a survey was conducted to find out which month the most products were ordered
+form*/
+
+select order_date ,quantity from order_details
+join orders on  order_details.order_id=orders.order_id
+where order_date BETWEEN '1996-01-01' and '1997-01-01'
+order by quantity desc
+limit 1;

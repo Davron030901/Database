@@ -1,0 +1,7 @@
+/* A query that finds a list of cities where there are both buyers and workers living in the same city
+write (Employees and Customers) */
+
+SELECT customers.company_name,employees.first_name,employees.last_name,employees.city FROM orders
+join customers ON orders.customer_id=customers.customer_id
+join employees ON orders.employee_id=employees.employee_id
+where customers.city=employees.city

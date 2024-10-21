@@ -1,0 +1,8 @@
+--Create information about employees who made the most orders
+
+select * from (select em.first_name, em.last_name, laters.employee_id, laters.nl from employees em,
+(select o.employee_id, count(o.employee_id) as nl from orders o
+join employees e on e.employee_id = o.employee_id
+join order_details on order_details.order_id=o.order_id
+where o.required_date < o.shipped_date group by o.employee_id) as laters where em.employee_id = laters.employee_id) as res where res.nl >= 10
+order by res.nl;

@@ -1,0 +1,7 @@
+/* Write a query that prints the top 10 customers (Customers and Orders) */
+
+SELECT company_name,quantity,unit_price,country,city FROM order_details
+join orders on orders.order_id =order_details.order_id
+join customers on customers.customer_id=orders.customer_id
+ORDER BY quantity DESC
+limit 10;

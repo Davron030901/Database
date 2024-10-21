@@ -1,0 +1,7 @@
+/* Remove the number of companies that live in London and have a small number of orders */
+
+SELECT quantity,country,city FROM order_details
+join orders on orders.order_id =order_details.order_id
+join customers on customers.customer_id=orders.customer_id
+where customers.city in ('London') and quantity<10
+ORDER BY quantity;

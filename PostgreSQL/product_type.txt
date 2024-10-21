@@ -1,0 +1,7 @@
+/* Create a report on the most ordered product type */
+
+SELECt suppliers.company_name,order_details.unit_price,quantity_per_unit,product_name,contact_name as "company_contact",address as "company address",quantity From order_details
+join products ON products.product_id=order_details.product_id
+join orders On orders.order_id=order_details.order_id
+join suppliers on suppliers.supplier_id=products.supplier_id
+where quantity=(SELECT max(quantity) From order_details)

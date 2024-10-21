@@ -1,0 +1,7 @@
+/* Information about buyers who ordered the largest amount in 1997.*/
+
+SELECT order_details.unit_price,company_name,product_name,contact_name,contact_title,address,city,region,postal_code,country,phone,fax,order_date FROM order_details
+join products on products.product_id=order_details.product_id
+join orders on order_details.order_id=orders.order_id
+join customers on customers.customer_id=orders.customer_id
+where order_details.unit_price=(SELECT max(order_details.unit_price) from order_details) and order_date BETWEEN '1997-01-01' AND '1998-01-01'

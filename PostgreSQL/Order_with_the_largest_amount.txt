@@ -1,0 +1,8 @@
+/* Write a query that finds the 5 customers who ordered the largest amount (Customers, Orders
+and Order Details) */
+
+SELECT company_name,unit_price,country,city FROM order_details
+join orders on orders.order_id =order_details.order_id
+join customers on customers.customer_id=orders.customer_id
+ORDER BY unit_price DESC
+limit 5;

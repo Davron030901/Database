@@ -1,0 +1,9 @@
+/*Products ordered in July 1996 and delivered by which company
+information about the delivery (Order Details, Orders, Products, Supplier)*/
+
+
+select order_date,product_name,company_name from order_details o_d
+join orders o on o.order_id=o_d.order_id
+join products pr on pr.product_id=o_d.product_id
+join suppliers s on s.supplier_id=pr.supplier_id
+where order_date >= '1996-07-01' and order_date < '1996-08-01'

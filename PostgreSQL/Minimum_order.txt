@@ -1,0 +1,6 @@
+/*The least ordered products*/
+
+SELECT product_name,quantity,products.unit_price,discontinued,units_in_stock,quantity_per_unit FROM order_details
+join products on products.product_id=order_details.product_id
+join orders on order_details.order_id=orders.order_id
+where order_details.quantity=(SELECT MIN(order_details.quantity) from order_details)

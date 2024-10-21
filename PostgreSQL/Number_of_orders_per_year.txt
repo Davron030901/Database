@@ -1,0 +1,13 @@
+--Print the number of orders for each year
+
+select SUM(quantity) as sum_year from order_details
+join orders on  order_details.order_id=orders.order_id
+where order_date BETWEEN '1996-01-01' and '1997-01-01'
+UNION
+select SUM(quantity) from order_details
+join orders on  order_details.order_id=orders.order_id
+where order_date BETWEEN '1997-01-01' and '1998-01-01'
+UNION
+select SUM(quantity) from order_details
+join orders on  order_details.order_id=orders.order_id
+where order_date BETWEEN '1998-01-01' and '1999-01-01'

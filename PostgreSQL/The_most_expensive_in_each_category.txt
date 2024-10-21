@@ -1,0 +1,6 @@
+/* Write a query that prints the most expensive product for each category (products and
+categories) */
+
+SELECT DISTINCT ON (categories.category_name) categories.category_name,unit_price FROM categories
+join products on categories.category_id =products.category_id
+ORDER BY category_name,unit_price desc;

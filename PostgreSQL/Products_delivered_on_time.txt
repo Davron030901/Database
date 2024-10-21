@@ -1,0 +1,6 @@
+/* How long and by whom were the products delivered on time
+form information about delivery */
+
+select company_name,order_date,shipped_date,required_date,required_date-shipped_date as ship_day from orders
+join shippers on shippers.shipper_id=orders.ship_via
+where shipped_date<required_date
